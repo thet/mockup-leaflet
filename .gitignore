@@ -1,0 +1,7 @@
+*.py?
+/bower_components
+/build/
+/coverage/
+/docs/
+/node_modules/
+/test-results.xml

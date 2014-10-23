@@ -1,0 +1,16 @@
+{
+  "name": "mockup-leaflet",
+  "version": "0.0.1",
+  "description": "Mockup Leaflet Integration",
+  "dependencies": {
+    "leaflet": "",
+    "leaflet-fullscreen": "",
+    "leaflet-providers": "",
+    "mockup": "",
+    "mockup-core": ""
+  },
+  "devDependencies": {
+    "expect": "",
+    "sinonjs": ""
+  }
+}
