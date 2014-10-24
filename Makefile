@@ -26,8 +26,6 @@ bundle-leaflet:
 	NODE_PATH=$(NODE_PATH) $(GRUNT) bundle-leaflet $(DEBUG) $(VERBOSE)
 
 docs:
-	if test ! -d docs; then $(GIT) clone git://github.com/plone/mockup.git -b gh-pages docs; fi
-	rm -rf docs/dev
 	NODE_PATH=$(NODE_PATH) $(GRUNT) bundle-docs $(DEBUG) $(VERBOSE)
 
 bootstrap-common:

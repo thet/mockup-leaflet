@@ -23,72 +23,30 @@ module.exports = function(grunt) {
   };
 
   var MockupGrunt = require('./bower_components/mockup-core/js/grunt');
-  var requirejsOptionsCore = require('./bower_components/mockup-core/js/config');
-  var requirejsOptions = deepExtend(deepExtend({}, requirejsOptionsCore), require('./js/config'));
+  //var requirejsOptionsCore = require('./bower_components/mockup-core/js/config');
+  //var requirejsOptions = deepExtend(deepExtend({}, requirejsOptionsCore), require('./js/config'));
 
+  var requirejsOptions = require('./js/config');
+
+  console.log(requirejsOptions);
   var mockup = new MockupGrunt(requirejsOptions);
   var docsExtraIncludes = [];
 
 
+  console.log(mockup.patterns);
   for (var i = 0; i < mockup.patterns.length; i = i + 1) {
     if (mockup.patterns[i].indexOf('-url') === -1) {
       docsExtraIncludes.push(mockup.patterns[i]);
       docsExtraIncludes.push('text!' + requirejsOptions.paths[mockup.patterns[i]] + '.js');
     }
   }
+  console.log(docsExtraIncludes);
 
-
-  mockup.registerBundle('docs', {
-    less: {
-      options : {
-        paths : ['../../../'],
-        modifyVars : {
-          bowerPath: '"bower_components/"',
-          mockupPath: '"patterns/"',
-          mockuplessPath: '"less/"'
-        }
-      }
-    },
-    copy: {
-      docs: {
-        files: [
-          { expand: true, src: 'index.html', dest: 'docs/dev/' },
-          { expand: true, src: '*.md', dest: 'docs/dev/' },
-          { expand: true, src: 'js/**', dest: 'docs/dev/' },
-          { expand: true, src: 'tests/**', dest: 'docs/dev/' },
-          { expand: true, src: 'lib/**', dest: 'docs/dev/' },
-          { expand: true, src: 'bower_components/**', dest: 'docs/dev/' },
-          { expand: true, src: 'node_modules/requirejs/require.js', dest: 'docs/dev/' },
-          { expand: true, src: 'build/**', dest: 'docs/dev/' },
-          { expand: true, src: 'less/**', dest: 'docs/dev/' }
-        ]
-      }
-    },
-    sed: {
-      'docs-css': {
-        path: 'docs/dev/index.html',
-        pattern: 'href="docs/dev/docs.min.css"',
-        replacement: 'href="docs.min.css"'
-      },
-      'docs-js': {
-        path: 'docs/dev/index.html',
-        pattern: '<script src="node_modules/grunt-contrib-less/node_modules/less/dist/less-1.6.1.js"></script>\n  <script src="node_modules/requirejs/require.js"></script>\n  <script src="js/config.js"></script>\n  <script>require\\(\\[\'mockup-bundles-docs\'\\]\\);</script>',
-        replacement: '<script src="docs.min.js"></script>'
-      },
-      'docs-legacy-js': {
-        path: 'docs/dev/index.html',
-        pattern: '<script src="bower_components/es5-shim/es5-shim.js"></script>\n    <script src="bower_components/es5-shim/es5-sham.js"></script>\n    <script src="bower_components/console-polyfill/index.js"></script>',
-        replacement: '<script src="docs-legacy.js"></script>'
-      }
-    }
-  }, {
-    path: 'docs/dev/',
-    url: 'docs',
-    extraInclude: docsExtraIncludes,
-  }, ['requirejs', 'less', 'copy', 'sed']);
-
-
-
+  mockup.registerBundle('docs',
+    {less: {options: {modifyVars: {bowerPath: '"bower_components/"' }}}},
+    {extraInclude: docsExtraIncludes},
+    ['less',]
+  );
   mockup.registerBundle('leaflet');
   mockup.initGrunt(grunt);
 };

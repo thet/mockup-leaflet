@@ -21,10 +21,29 @@
       'mockup-docs-pattern': 'bower_components/mockup-core/js/docs/pattern',
       'mockup-docs-view': 'bower_components/mockup-core/js/docs/view',
       'mockup-fakeserver': 'bower_components/mockup/tests/fakeserver',
+
+      'JSXTransformer': 'bower_components/react/JSXTransformer',
+      'backbone': 'bower_components/backbone/backbone',
+      'bootstrap-collapse': 'bower_components/bootstrap/js/collapse',
+      'bootstrap-transition': 'bower_components/bootstrap/js/transition',
+      'expect': 'bower_components/expect/index',
+      'jquery': 'bower_components/jquery/dist/jquery',
+      'marked': 'bower_components/marked/lib/marked',
+      'react': 'bower_components/react/react',
+      'sinon': 'bower_components/sinonjs/sinon',
+      'text': 'bower_components/requirejs-text/text',
+      'underscore': 'bower_components/lodash/dist/lodash.underscore'
     },
     shim: {
       'leaflet-providers': { deps: ['leaflet'], },
       'leaflet-fullscreen': { deps: ['leaflet'], },
+
+      'backbone': {exports: 'window.Backbone', deps: ['underscore', 'jquery']},
+      'bootstrap-collapse': {exports: 'window.jQuery.fn.collapse.Constructor', deps: ['jquery']},
+      'bootstrap-transition': {exports: 'window.jQuery.support.transition', deps: ['jquery']},
+      'expect': {exports: 'window.expect'},
+      'sinon': {exports: 'window.sinon'},
+      'underscore': {exports: 'window._'}
     },
     wrapShim: true
   };
