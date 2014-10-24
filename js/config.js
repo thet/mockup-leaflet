@@ -13,6 +13,7 @@
       'mockup-patterns-base': 'bower_components/mockup-core/js/pattern',
       'mockup-registry': 'bower_components/mockup-core/js/registry',
       'mockup-patterns-leaflet': 'patterns/leaflet/pattern',
+      // mockup-core dependencies
       'mockup-bundles-leaflet': 'js/bundles/leaflet',
       'mockup-bundles-docs': 'js/bundles/docs',
       'mockup-docs': 'bower_components/mockup-core/js/docs/app',
@@ -21,7 +22,6 @@
       'mockup-docs-pattern': 'bower_components/mockup-core/js/docs/pattern',
       'mockup-docs-view': 'bower_components/mockup-core/js/docs/view',
       'mockup-fakeserver': 'bower_components/mockup/tests/fakeserver',
-
       'JSXTransformer': 'bower_components/react/JSXTransformer',
       'backbone': 'bower_components/backbone/backbone',
       'bootstrap-collapse': 'bower_components/bootstrap/js/collapse',
@@ -37,7 +37,7 @@
     shim: {
       'leaflet-providers': { deps: ['leaflet'], },
       'leaflet-fullscreen': { deps: ['leaflet'], },
-
+      // mockup-core shims
       'backbone': {exports: 'window.Backbone', deps: ['underscore', 'jquery']},
       'bootstrap-collapse': {exports: 'window.jQuery.fn.collapse.Constructor', deps: ['jquery']},
       'bootstrap-transition': {exports: 'window.jQuery.support.transition', deps: ['jquery']},
