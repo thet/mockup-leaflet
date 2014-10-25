@@ -1,7 +1,7 @@
 {
   "name": "mockup-leaflet",
   "version": "0.0.1",
-  "description": "Mockup Leaflet Integration",
+  "description": "Leaflet integration for Mockup",
   "dependencies": {
     "leaflet": "",
     "leaflet-fullscreen": "",

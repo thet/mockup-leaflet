@@ -107,4 +107,3 @@ define([
 
   return Leaflet;
 });
-

@@ -1,7 +1,7 @@
 {
   "name": "mockup-leaflet",
   "version": "0.0.1",
-  "description": "Mockup Leaflet Integration",
+  "description": "Leaflet integration for Mockup",
   "homepage": "http://plone.github.io/mockup",
   "devDependencies": {
     "bower": "~1.3.2",
