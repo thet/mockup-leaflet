@@ -4,6 +4,7 @@
   "description": "Leaflet integration for Mockup",
   "dependencies": {
     "leaflet": "",
+    "Leaflet.fullscreen": "git@github.com:Leaflet/Leaflet.fullscreen#master",
     "leaflet-providers": "",
     "L.GeoSearch": "git@github.com:thet/L.GeoSearch.git",
     "mockup": "",
