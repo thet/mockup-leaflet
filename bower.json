@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Leaflet integration for Mockup",
   "dependencies": {
+    "leaflet": "",
+    "leaflet-providers": "",
+    "L.GeoSearch": "git@github.com:thet/L.GeoSearch.git",
     "mockup": "",
     "mockup-core": ""
   },
