@@ -7,13 +7,24 @@
     baseUrl: './',
     optimize: 'none',
     paths: {
+      // LEAFLET
       'leaflet': 'bower_components/leaflet/dist/leaflet-src',
+      // LEAFLET GEOSEARCH
+      'leaflet-geosearch': 'bower_components/L.GeoSearch/l.control.geosearch',
+      'leaflet-geosearch-bing': 'bower_components/L.GeoSearch/l.geosearch.provider.bing',
+      'leaflet-geosearch-esri': 'bower_components/L.GeoSearch/l.geosearch.provider.esri',
+      'leaflet-geosearch-google': 'bower_components/L.GeoSearch/l.geosearch.provider.google',
+      'leaflet-geosearch-nokia': 'bower_components/L.GeoSearch/l.geosearch.provider.nokia',
+      'leaflet-geosearch-openstreetmap': 'bower_components/L.GeoSearch/l.geosearch.provider.openstreetmap',
+      // LEAFLET PROVIDERS
       'leaflet-providers': 'bower_components/leaflet-providers/leaflet-providers',
-      'leaflet-fullscreen': 'bower_components/leaflet-fullscreen/Control.FullScreen',
-      'mockup-patterns-base': 'bower_components/mockup-core/js/pattern',
-      'mockup-registry': 'bower_components/mockup-core/js/registry',
+      // LEAFLET FULLSCREEN
+      'leaflet-fullscreen': 'bower_components/Leaflet.fullscreen/dist/Leaflet.fullscreen',
+      // PATTERN LEAFLET
       'mockup-patterns-leaflet': 'patterns/leaflet/pattern',
       // mockup-core dependencies
+      'mockup-patterns-base': 'bower_components/mockup-core/js/pattern',
+      'mockup-registry': 'bower_components/mockup-core/js/registry',
       'mockup-bundles-leaflet': 'js/bundles/leaflet',
       'mockup-bundles-docs': 'js/bundles/docs',
       'mockup-docs': 'bower_components/mockup-core/js/docs/app',
@@ -37,6 +48,12 @@
     shim: {
       'leaflet-providers': { deps: ['leaflet'], },
       'leaflet-fullscreen': { deps: ['leaflet'], },
+      'leaflet-geosearch': { deps: ['leaflet'], },
+      'leaflet-geosearch-bing': { deps: ['leaflet-geosearch'], },
+      'leaflet-geosearch-esri': { deps: ['leaflet-geosearch'], },
+      'leaflet-geosearch-google': { deps: ['leaflet-geosearch'], },
+      'leaflet-geosearch-nokia': { deps: ['leaflet-geosearch'], },
+      'leaflet-geosearch-openstreetmap': { deps: ['leaflet-geosearch'], },
       // mockup-core shims
       'backbone': {exports: 'window.Backbone', deps: ['underscore', 'jquery']},
       'bootstrap-collapse': {exports: 'window.jQuery.fn.collapse.Constructor', deps: ['jquery']},
