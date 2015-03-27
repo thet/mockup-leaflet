@@ -1,13 +1,26 @@
 define([
   'jquery',
-  'mockup-registry',
+  'pat-registry',
+  'mockup-patterns-base',
   'mockup-patterns-leaflet'
-], function($, Registry) {
+], function($, registry, Base) {
   'use strict';
 
-  $(document).ready(function() {
-    var $registry = $('.pat-leaflet');
-    Registry.scan($registry);
+  var BundleLeaflet = Base.extend({
+    name: 'bundle-leaflet',
+    init: function() {
+      var self = this;
+    }
   });
 
+  // initialize only if we are in top frame
+  if (window.parent === window) {
+    $(document).ready(function() {
+      $('body').addClass('pat-leaflet');
+      if (!registry.initialized) {
+        registry.init();
+      }
+    });
+  }
+  return BundleLeaflet;
 });
