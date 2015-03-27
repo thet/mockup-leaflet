@@ -22,12 +22,14 @@ define([
   'mockup-patterns-base',
   'leaflet',
   'leaflet-providers',
-  'leaflet-fullscreen'
+  'leaflet-fullscreen',
+  'leaflet-geosearch-esri'
 ], function (Base, L) {
   'use strict';
 
   var Leaflet = Base.extend({
     name: 'leaflet',
+    trigger: '.pat-leaflet',
     defaults: {
       errorClass: 'error'
     },
@@ -36,8 +38,7 @@ define([
           $el = self.$el,
           map,
           baseLayers,
-          editable,
-          fullScreen;
+          editable;
           //markers,
           //bounds,
           //update_inputs,
@@ -46,14 +47,23 @@ define([
       editable = false;
       //editable = ($('div.geolocation_wrapper.edit').length && true) || false;
 
-      map = new L.Map($el[0]).setView([51.505, -0.09], 13);
+      L = window.L; // have to use window.L - leaflet registers anonymous amd module and does not return global L...?
 
-      L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
-      baseLayers = ['OpenStreetMap.HOT', 'Esri.WorldImagery', 'Thunderforest.OpenCycleMap', 'Thunderforest.Transport'];
-      //L.control.layers.provided(baseLayers).addTo(map);
+      debugger;
 
-      fullScreen = new L.Control.FullScreen();
-      map.addControl(fullScreen);
+      map = new L.Map($el[0], {
+        fullscreenControl: true
+      });
+
+      // Layers
+      baseLayers = {
+        'Map': L.tileLayer.provider('OpenStreetMap.HOT'),
+        'Satellite': L.tileLayer.provider('Esri.WorldImagery'),
+        'Outdoors': L.tileLayer.provider('Thunderforest.Outdoors'),
+        'Toner': L.tileLayer.provider('Stamen.Toner'),
+      };
+      baseLayers['Map'].addTo(map);
+      L.control.layers(baseLayers).addTo(map);
 
       /*
       // ADD MARKERS
